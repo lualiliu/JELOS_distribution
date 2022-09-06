@@ -7,7 +7,8 @@
 
 PKG_NAME="linux"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/JustEnoughLinuxOS"
+#PKG_SITE="https://github.com/JustEnoughLinuxOS"
+PKG_SITE="https://github.com/lualiliu"
 PKG_DEPENDS_HOST="ccache:host openssl:host"
 PKG_DEPENDS_TARGET="toolchain linux:host cpio:host kmod:host xz:host wireless-regdb keyutils util-linux binutils ${KERNEL_EXTRA_DEPENDS_TARGET}"
 PKG_DEPENDS_INIT="toolchain"
@@ -31,7 +32,7 @@ case ${DEVICE} in
   ;;
   RG353V|RG353P|RG503)
     PKG_URL="${PKG_SITE}/rk356x-kernel.git"
-    PKG_VERSION="ce84246cd"
+    PKG_VERSION="d6a9fde52dd6c8e20dc9f29c549fddd33ed2ccbc"
   ;;
 esac
 
