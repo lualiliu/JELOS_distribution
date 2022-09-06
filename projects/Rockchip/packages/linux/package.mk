@@ -29,7 +29,7 @@ case ${DEVICE} in
     PKG_VERSION="81ca1abcdfb9c7681408ff282ff65bb645c495e6"
     PKG_GIT_CLONE_BRANCH="master"
   ;;
-  RG353P|RG503)
+  RG353V|RG353P|RG503)
     PKG_URL="${PKG_SITE}/rk356x-kernel.git"
     PKG_VERSION="ce84246cd"
   ;;

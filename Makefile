@@ -39,6 +39,9 @@ RG503:
 RG353P:
 	DEVICE_ROOT=RG503 PROJECT=Rockchip DEVICE=RG353P ARCH=arm ./scripts/build_distro
 	DEVICE_ROOT=RG503 PROJECT=Rockchip DEVICE=RG353P ARCH=aarch64 ./scripts/build_distro
+RG353V:
+	DEVICE_ROOT=RG503 PROJECT=Rockchip DEVICE=RG353V ARCH=arm ./scripts/build_distro
+	DEVICE_ROOT=RG503 PROJECT=Rockchip DEVICE=RG353V ARCH=aarch64 ./scripts/build_distro
 
 RG351P:
 	DEVICE_ROOT=RG351P PROJECT=Rockchip DEVICE=RG351P ARCH=arm ./scripts/build_distro

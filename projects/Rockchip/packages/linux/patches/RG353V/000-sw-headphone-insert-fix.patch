@@ -1,0 +1,31 @@
+diff --git a/drivers/headset_observe/rk_headset_irq_hook_adc.c b/drivers/headset_observe/rk_headset_irq_hook_adc.c
+index b6cd06c60..fa7138630 100644
+--- a/drivers/headset_observe/rk_headset_irq_hook_adc.c
++++ b/drivers/headset_observe/rk_headset_irq_hook_adc.c
+@@ -183,6 +183,8 @@ static irqreturn_t headset_interrupt(int irq, void *dev_id)
+ 	#endif
+ 
+ 	if (headset_info->headset_status == HEADSET_IN) {
++			input_report_switch(headset_info->input_dev, SW_HEADPHONE_INSERT, 0);
++			input_sync(headset_info->input_dev);
+ 		if (pdata->chan != 0) {
+ 			/* detect Hook key */
+ 			schedule_delayed_work(
+@@ -203,6 +205,8 @@ static irqreturn_t headset_interrupt(int irq, void *dev_id)
+ 			irq_set_irq_type(headset_info->irq[HEADSET],
+ 					 IRQF_TRIGGER_RISING);
+ 	} else if (headset_info->headset_status == HEADSET_OUT) {
++			input_report_switch(headset_info->input_dev, SW_HEADPHONE_INSERT, 1);
++			input_sync(headset_info->input_dev);
+ 		headset_info->cur_headset_status = HEADSET_OUT;
+ 		cancel_delayed_work(&headset_info->hook_work);
+ 		if (headset_info->isMic) {
+@@ -466,7 +470,7 @@ int rk_headset_adc_probe(struct platform_device *pdev,
+ 		dev_err(&pdev->dev, "failed to register input device\n");
+ 		goto failed;
+ 	}
+-	input_set_capability(headset->input_dev, EV_KEY, HOOK_KEY_CODE);
++	input_set_capability(headset->input_dev, EV_SW, SW_HEADPHONE_INSERT);
+ 	if (pdata->headset_gpio) {
+ 		unsigned long irq_type;
+ 
