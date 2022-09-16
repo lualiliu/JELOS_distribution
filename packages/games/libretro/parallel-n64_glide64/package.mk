@@ -32,7 +32,7 @@ case ${ARCH} in
       RG351P|RG351V|RG351MP)
         PKG_MAKE_OPTS_TARGET=" platform=RG351x"
       ;;
-      RG503|RG353P)
+      RG503|RG353P|RG353V)
         PKG_MAKE_OPTS_TARGET+=" platform=RK3566"
       ;;
       RG552)

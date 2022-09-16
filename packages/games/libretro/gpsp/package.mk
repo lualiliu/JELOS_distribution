@@ -44,7 +44,7 @@ then
     if [[ "${DEVICE}" =~ RG351 ]]
     then
       make CC=${CC} platform=RG351x
-    elif [[ "${DEVICE}" =~ RG503 ]] || [[ "${DEVICE}" =~ RG353P ]]
+    elif [[ "${DEVICE}" =~ RG503 ]] || [[ "${DEVICE}" =~ RG353P ]] || [[ "${DEVICE}" =~ RG353V ]]
     then
       make CC=${CC} platform=RK3566
     else
