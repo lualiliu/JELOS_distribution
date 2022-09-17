@@ -82,7 +82,7 @@ fi
 
 MYDEV=$(awk '/^Hardware/ {print $4}' /proc/cpuinfo)
 case ${MYDEV} in
-  RG503|RG353P|RG552)
+  RG503|RG353P|RG353V|RG552)
     IDBSEEK="bs=512 seek=64"
   ;;
   *)
