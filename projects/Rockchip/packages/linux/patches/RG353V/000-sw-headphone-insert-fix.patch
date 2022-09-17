@@ -25,7 +25,7 @@ index b6cd06c60..fa7138630 100644
  		goto failed;
  	}
 -	input_set_capability(headset->input_dev, EV_KEY, HOOK_KEY_CODE);
-+	input_set_capability(headset->input_dev, EV_SW, SW_HEADPHONE_INSERT);
++	input_set_capability(headset->input_dev, EV_SW, SW_HEADPHONE_INSERT);input_report_switch(headset_info->input_dev, SW_HEADPHONE_INSERT, 1);input_sync(headset_info->input_dev);
  	if (pdata->headset_gpio) {
  		unsigned long irq_type;
  
