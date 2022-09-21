@@ -7,8 +7,7 @@
 
 PKG_NAME="linux"
 PKG_LICENSE="GPL"
-#PKG_SITE="https://github.com/JustEnoughLinuxOS"
-PKG_SITE="https://github.com/lualiliu"
+PKG_SITE="https://github.com/JustEnoughLinuxOS"
 PKG_DEPENDS_HOST="ccache:host openssl:host"
 PKG_DEPENDS_TARGET="toolchain linux:host cpio:host kmod:host xz:host wireless-regdb keyutils util-linux binutils ${KERNEL_EXTRA_DEPENDS_TARGET}"
 PKG_DEPENDS_INIT="toolchain"
