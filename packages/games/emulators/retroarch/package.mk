@@ -2,7 +2,7 @@
 # Copyright (C) 2021-present 351ELEC (https://github.com/351ELEC)
 
 PKG_NAME="retroarch"
-PKG_VERSION="e1a139ec0f26aed87c1ff9042e733e2c4b1df39b"
+PKG_VERSION="ab57d3cab7d870b5dd55ddf9d9c584775bcdf03d"
 PKG_SITE="https://github.com/libretro/RetroArch"
 PKG_URL="${PKG_SITE}.git"
 PKG_LICENSE="GPLv3"
@@ -47,11 +47,20 @@ pre_configure_target() {
   if [ ! "${OPENGL}" = "no" ]; then
       PKG_DEPENDS_TARGET+=" ${OPENGL} glu libglvnd"
       PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengl"
+      if [ "${ARCH}" = "x86_64" ]; then
+         PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengl1"
+      fi
+  else
+      PKG_CONFIGURE_OPTS_TARGET+=" --disable-opengl"
   fi
 
-  if [ "${OPENGLES_SUPPORT}" = yes ]; then
+  if [ "${OPENGLES_SUPPORT}" = yes ] && \
+     [ ! "${ARCH}" = "x86_64" ] || \
+     [ ! "${DEVICE}" = "RG552" ]; then
       PKG_DEPENDS_TARGET+=" ${OPENGLES}"
-      PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengles --enable-opengles3 --enable-opengles3_2 --enable-kms --disable-mali_fbdev"
+      PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengles --enable-opengles3 --enable-opengles3_2 --enable-kms"
+  else
+      PKG_CONFIGURE_OPTS_TARGET+=" --disable-opengles --disable-opengles3 --disable-opengles3_2"
   fi
 
   if [ "${VULKAN_SUPPORT}" = "yes" ]

@@ -1,0 +1,16 @@
+#!/bin/bash
+. /etc/profile
+
+if [ "${UI_SERVICE}" = "weston.service" ]
+then
+  weston-terminal --command="${1}"
+else
+  systemctl stop ${UI_SERVICE}
+  exec 1>/dev/console
+  exec 2>/dev/null
+  ${1}
+fi
+if [ ! "${UI_SERVICE}" = "weston.service" ]
+then
+  systemctl start ${UI_SERVICE}
+fi
